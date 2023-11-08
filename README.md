@@ -4,12 +4,6 @@
 
 A NestJS microservice boilerplate template for rapidly spinning up microservice projects.
 
-## Installation
-
-```bash
-$ yarn install
-```
-
 ## Install Docker
 
 1. Go to [Docker](https://www.docker.com/products/docker-desktop) and download the appropriate version for your OS.
