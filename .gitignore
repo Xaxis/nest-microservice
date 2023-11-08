@@ -1,0 +1,11 @@
+# dependencies
+node_modules/
+
+# builds
+/out
+/dist
+/build
+
+# misc
+*.iml
+.idea
