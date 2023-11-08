@@ -1,11 +1,35 @@
 version: '3.8'
 services:
-  app:
-    build: .
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+      - ./.env.dev
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
     ports:
-      - "3000:3000"
+      - "${DB_PORT}:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: dev
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-    environment:
-      - NODE_ENV=development
+    env_file:
+      - ./.env
+      - ./.env.dev
+    ports:
+      - "${HTTPSERVER_PORT}:3031"
+    depends_on:
+      - db
+
+volumes:
+  db-data:
