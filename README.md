@@ -32,17 +32,16 @@ src/
 |   |-- auth/
 |   |   |-- auth.module.ts
 |   |   |-- auth.service.ts
-|   |   |-- jwt.strategy.ts
-|   |   |-- jwt-auth.guard.ts
+|   |   |-- auth-jwt.strategy.ts
+|   |   |-- auth-jwt.guard.ts
 |   |-- config/
 |   |   |-- config.module.ts
 |   |   |-- config.service.ts
-|   |   |-- configuration.interface.ts
+|   |   |-- config.interface.ts
 |   |   |-- constants.ts
 |   |   |-- env.config.ts
-|   |   |-- development.env
-|   |   |-- staging.env
-|   |   |-- production.env
+|   |   |-- env.dev.ts
+|   |   |-- env.prod.ts
 |   |-- database/
 |   |   |-- migrations/
 |   |   |-- seeds/
