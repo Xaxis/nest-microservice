@@ -8,7 +8,6 @@ import { DatabaseModule } from './core/database/database.module';
 
 @Module({
   imports: [
-
     // Load environment variables
     ConfigModule.forRoot({
       isGlobal: true,

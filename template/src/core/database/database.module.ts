@@ -5,14 +5,14 @@ import { DatabaseService } from './database.service';
 import { databaseConfig } from './database.config';
 
 @Module({
-    imports: [
-        TypeOrmModule.forRootAsync({
-            imports: [ConfigModule],
-            useFactory: databaseConfig,
-            inject: [ConfigService],
-        }),
-    ],
-    providers: [DatabaseService],
-    exports: [DatabaseService],
+  imports: [
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: databaseConfig,
+      inject: [ConfigService],
+    }),
+  ],
+  providers: [DatabaseService],
+  exports: [DatabaseService],
 })
 export class DatabaseModule {}
