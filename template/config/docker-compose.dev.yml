@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: microservice-db
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+      - .env.development
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "${DB_PORT}:5432"
+
+  app:
+    container_name: microservice-app
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: development
+    volumes:
+      - ..:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - ./.env
+      - .env.development
+    ports:
+      - "${HTTPSERVER_PORT}:3031"
+    depends_on:
+      - db
+    command: yarn start:dev
+
+volumes:
+  db-data:

@@ -9,12 +9,12 @@ import { DatabaseModule } from './core/database/database.module';
 @Module({
   imports: [
 
-    // Load environment variables from .env files
+    // Load environment variables
     ConfigModule.forRoot({
       isGlobal: true,
       load: [
-        () => dotenv.parse(fs.readFileSync(`.env`)),
-        () => dotenv.parse(fs.readFileSync(`.env.${process.env.NODE_ENV || 'dev'}`)),
+        () => dotenv.parse(fs.readFileSync(`./config/.env`)),
+        () => dotenv.parse(fs.readFileSync(`./config/.env.${process.env.NODE_ENV || 'development'}`)),
       ],
     }),
 

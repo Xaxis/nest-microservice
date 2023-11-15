@@ -1,12 +1,14 @@
 version: '3.8'
+
 services:
   db:
+    container_name: microservice-db
     image: postgres
     volumes:
       - db-data:/var/lib/postgresql/data
     env_file:
       - ./.env
-      - ./.env.dev
+      - .env.production
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -15,17 +17,15 @@ services:
       - "${DB_PORT}:5432"
 
   app:
+    container_name: microservice-app
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile
       args:
-        NODE_ENV: dev
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+        NODE_ENV: production
     env_file:
       - ./.env
-      - ./.env.dev
+      - .env.production
     ports:
       - "${HTTPSERVER_PORT}:3031"
     depends_on:
