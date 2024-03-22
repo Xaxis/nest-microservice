@@ -1,10 +1,13 @@
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './core/database/database.module';
+import { GraphqlModule } from './core/graphql/graphql.module';
+import { SampleResolver } from './core/graphql/resolvers/sample.resolver';
+import { SampleService } from './core/graphql/services/sample.service';
 
 @Module({
   imports: [
@@ -17,10 +20,11 @@ import { DatabaseModule } from './core/database/database.module';
       ],
     }),
 
-    // Load DatabaseModule
+    // Load modules
     DatabaseModule,
+    GraphqlModule
   ],
   controllers: [AppController],
-  providers: [AppService, ConfigService],
+  providers: [AppService, SampleResolver, SampleService],
 })
 export class AppModule {}

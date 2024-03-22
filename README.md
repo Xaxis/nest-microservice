@@ -23,20 +23,6 @@ A NestJS microservice boilerplate template for rapidly spinning up microservice 
 The following provides a detailed overview of the directory structure for the NestJS microservice application. It is designed to facilitate understanding of where specific parts of the codebase are located and their intended purpose.
 
 ```
-|-- config/
-|   |-- docker/
-|   |   |-- docker-compose.dev.yml
-|   |   |-- docker-compose.prod.yml
-|   |   |-- ...
-|   |-- env/
-|   |   |-- .env.dev
-|   |   |-- .env.prod
-|   |   |-- ...
-|-- dist/
-|-- node_modules/
-```
-
-```
 src/
 |-- core/
 |   |-- auth/
@@ -56,9 +42,7 @@ src/
 |   |   |-- migrations/
 |   |   |-- seeds/
 |   |   |-- sources/
-|   |   |   |-- api.datasource.ts
-|   |   |   |-- nosql.datasource.ts
-|   |   |   |-- sql.datasource.ts
+|   |-- graphql/
 |   |-- resilience/
 |   |   |-- circuit-breaker/
 |   |   |   |-- circuit-breaker.service.ts

@@ -1,0 +1,4 @@
+type Sample {
+    id: ID!
+    name: String!
+}
